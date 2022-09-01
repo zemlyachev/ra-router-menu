@@ -1,5 +1,23 @@
+import { Routes, Route, NavLink } from "react-router-dom";
+import "./App.css";
+
 function Menu() {
-  return null;
+  return (
+    <nav className="menu">
+      <NavLink to="/" className="menu__item">
+        Главная
+      </NavLink>
+      <NavLink to="/drift" className="menu__item">
+        Дрифт-такси
+      </NavLink>
+      <NavLink to="/timeattack" className="menu__item">
+        Time Attack
+      </NavLink>
+      <NavLink to="/forza" className="menu__item">
+        Forza Karting
+      </NavLink>
+    </nav>
+  );
 }
 
 function HomePage() {
@@ -75,16 +93,16 @@ function TimeAttackPage() {
 
 export default function App() {
   return (
-    <Router>
-      <div>
-        <Menu />
-        <div className="page">
-          <Route path="/" exact component={HomePage} />
-          <Route path="/drift" component={DriftPage} />
-          <Route path="/timeattack" component={TimeAttackPage} />
-          <Route path="/forza" component={ForzaPage} />
-        </div>
+    <div>
+      <Menu />
+      <div className="page">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/drift" element={<DriftPage />} />
+          <Route path="/timeattack" element={<TimeAttackPage />} />
+          <Route path="/forza" element={<ForzaPage />} />
+        </Routes>
       </div>
-    </Router>
+    </div>
   );
 }
